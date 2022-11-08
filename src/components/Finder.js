@@ -1,36 +1,27 @@
 import { useState, useEffect } from "react";
 
 function Finder() {
-  // Fetch multiple GIFs from the Giphy API
   const [gifs, setGifs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [error, setError] = useState(null);
 
   const fetchGifs = async () => {
     try {
       const url = `https://api.giphy.com/v1/gifs/search?api_key=Vg9p79URRw6MAXMa0U80g7UKMu61wOMe&q=${searchTerm}&limit=10&offset=0&rating=g&lang=en`;
       const response = await fetch(url);
 
-      if (response.status === 200) {
-        const data = await response.json();
+      const data = await response.json();
 
-        // Check if the array is empty
-        if (data.data.length === 0) {
-          throw new Error("No GIFs found");
-        }
-        if (window.innerWidth < 768) {
-          setGifs(data.data.map((gif) => gif.images.fixed_height_small.url));
-        }
-        if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-          setGifs(data.data.map((gif) => gif.images.fixed_height.url));
-        }
-        if (window.innerWidth >= 1024) {
-          setGifs(data.data.map((gif) => gif.images.original.url));
-        }
+      // Check if the array is empty, if so throw an error
+      if (data.data.length === 0) {
+        setGifs([]);
+        throw new Error("No GIFs found");
       } else {
-        throw new Error(response.status);
+        setGifs(data.data.map((gif) => gif.images.original.url));
       }
     } catch (error) {
       console.log(error);
+      return error;
     }
   };
 
@@ -70,9 +61,7 @@ function Finder() {
       />
       <button onClick={fetchGifs}>Search</button>
       <div className="finder__gifs">
-        {gifs.map((gif) => (
-          <img src={gif} alt="random GIF" />
-        ))}
+        {error ? error : gifs.map((gif) => <img src={gif} alt="random GIF" />)}
       </div>
     </section>
   );
