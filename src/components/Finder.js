@@ -1,27 +1,32 @@
 import { useState, useEffect } from "react";
+import ErrorMessage from "./ErrorMessage.js";
 
 function Finder() {
   const [gifs, setGifs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   const fetchGifs = async () => {
-    try {
-      const url = `https://api.giphy.com/v1/gifs/search?api_key=Vg9p79URRw6MAXMa0U80g7UKMu61wOMe&q=${searchTerm}&limit=10&offset=0&rating=g&lang=en`;
-      const response = await fetch(url);
+    if (searchTerm !== "") {
+      try {
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=Vg9p79URRw6MAXMa0U80g7UKMu61wOMe&q=${searchTerm}&limit=10&offset=0&rating=g&lang=en`;
+        const response = await fetch(url);
 
-      const data = await response.json();
+        const data = await response.json();
 
-      // Check if the array is empty, if so throw an error
-      if (data.data.length === 0) {
-        setGifs([]);
-        throw new Error("No GIFs found");
-      } else {
-        setGifs(data.data.map((gif) => gif.images.original.url));
+        // Check if the array is empty, if so throw an error
+        if (data.data.length === 0) {
+          setGifs([]);
+          throw new Error("No GIPHYs found, try another search term");
+        } else {
+          setError(null);
+          setGifs(data.data.map((gif) => gif.images.original.url));
+        }
+      } catch (error) {
+        setError(error.message);
       }
-    } catch (error) {
-      console.log(error);
-      return error;
+    } else {
+      setError("Type something into the searchbar to find GIPHYs");
     }
   };
 
@@ -61,7 +66,12 @@ function Finder() {
       />
       <button onClick={fetchGifs}>Search</button>
       <div className="finder__gifs">
-        {error ? error : gifs.map((gif) => <img src={gif} alt="random GIF" />)}
+        {/* If there is an error, show the error message, otherwise show the GIFs */}
+        {error ? (
+          <ErrorMessage message={error} />
+        ) : (
+          gifs.map((gif) => <img src={gif} alt="random GIF" />)
+        )}
       </div>
     </section>
   );

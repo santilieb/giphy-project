@@ -4,7 +4,7 @@ function LoadingMessage() {
       <svg>
         <use href=""></use>
       </svg>
-      <p> Loading... </p>
+      <p> Giphy's will be here in a jiffy... </p>
     </div>
   );
 }
