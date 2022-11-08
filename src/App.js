@@ -3,24 +3,20 @@ import Finder from "./components/Finder.js";
 import Random from "./components/Random.js";
 import Trending from "./components/Trending.js";
 import Navbar from "./components/Navbar.js";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <main className="App">
-      {/* header div */}
-      <header>
-        <h1>React Giphy</h1>
-      </header>
-      <div className="navbar">
-        <Navbar />
-      </div>
+    <div className="App">
+      <Header />
+      <Navbar />
 
-      <div className="main">
+      <main className="main">
         <Random />
         <Finder />
         <Trending />
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
 
