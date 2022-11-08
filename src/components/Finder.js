@@ -70,7 +70,7 @@ function Finder() {
         {error ? (
           <ErrorMessage message={error} />
         ) : (
-          gifs.map((gif) => <img src={gif} alt="random GIF" />)
+          gifs.map((gif, index) => <img src={gif} alt="GIF" key={index} />)
         )}
       </div>
     </section>
