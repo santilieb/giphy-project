@@ -13,8 +13,8 @@ function Navbar() {
   return (
     <nav className="navbar">
       <h1>Navbar</h1>
-      <ul className="navbar__list">
-        <li
+      <section className="navbar__list">
+        <button
           id="random"
           className={`navbar__list-item ${
             activeNav === "random" ? "active" : ""
@@ -22,8 +22,8 @@ function Navbar() {
           onClick={handleClick}
         >
           Random icon
-        </li>
-        <li
+        </button>
+        <button
           id="finder"
           className={`navbar__list-item ${
             activeNav === "finder" ? "active" : ""
@@ -31,8 +31,8 @@ function Navbar() {
           onClick={handleClick}
         >
           Finder icon
-        </li>
-        <li
+        </button>
+        <button
           id="trending"
           className={`navbar__list-item ${
             activeNav === "trending" ? "active" : ""
@@ -40,8 +40,8 @@ function Navbar() {
           onClick={handleClick}
         >
           Trending icon
-        </li>
-      </ul>
+        </button>
+      </section>
     </nav>
   );
 }
