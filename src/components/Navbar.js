@@ -16,7 +16,7 @@ function Navbar() {
       <section className="navbar__list">
         <button
           id="random"
-          className={`navbar__list-item ${
+          className={`navbar__list-btn ${
             activeNav === "random" ? "active" : ""
           }`}
           onClick={handleClick}
@@ -25,7 +25,7 @@ function Navbar() {
         </button>
         <button
           id="finder"
-          className={`navbar__list-item ${
+          className={`navbar__list-btn ${
             activeNav === "finder" ? "active" : ""
           }`}
           onClick={handleClick}
@@ -34,7 +34,7 @@ function Navbar() {
         </button>
         <button
           id="trending"
-          className={`navbar__list-item ${
+          className={`navbar__list-btn ${
             activeNav === "trending" ? "active" : ""
           }`}
           onClick={handleClick}
