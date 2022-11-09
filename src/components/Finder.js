@@ -31,30 +31,44 @@ function Finder() {
     }
   };
 
+  // Search on ENTER key press
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      fetchFinderGifs();
+    }
+  };
+
   // Once the component loads, fetch the GIFs once
   // useEffect(() => {
   //   fetchFinderGifs();
   // }, []);
 
   return (
-    <section className="finder">
-      <h1>Finder</h1>
+    <section className="section-finder">
+      <h2 className="heading-secondary">Finder</h2>
       <input
+        className="searchbar"
         type="text"
         placeholder="Search for a GIPHY"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyUp={(e) => {
+          handleKeyPress(e);
+        }}
       />
-      <button onClick={fetchFinderGifs}>Search</button>
-      <div className="finder__gifs">
-        {/* If there is an error, show the error message, otherwise show the GIFs */}
-        {error ? (
-          <ErrorMessage message={error} />
-        ) : (
-          finderGifs.map((gif, index) => (
-            <img src={gif} alt="GIF" key={index} />
-          ))
-        )}
+      <button className="btn btn--finder" onClick={fetchFinderGifs}>
+        Search
+      </button>
+      {error && <ErrorMessage message={error} />}
+      <div className="finder-images">
+        {finderGifs.map((gif, index) => (
+          <img
+            key={index}
+            className="finder-image"
+            src={gif}
+            alt="finder GIF"
+          />
+        ))}
       </div>
     </section>
   );

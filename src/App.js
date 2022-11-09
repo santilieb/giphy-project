@@ -11,6 +11,7 @@ function App() {
   const { activeNav } = useContext(ProjectContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  //render content (below 1024px)
   const renderContent = () => {
     switch (activeNav) {
       case "random":
@@ -24,13 +25,14 @@ function App() {
     }
   };
 
+  //render contend (desktop)
   const renderContentDesktop = () => {
     return (
-      <div className="main__content--desktop">
+      <>
         <Random />
         <Finder />
         <Trending />
-      </div>
+      </>
     );
   };
 
@@ -45,7 +47,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       <main className="main">
         {windowWidth < 1024 ? (
           <>
@@ -53,7 +54,7 @@ function App() {
             <div className="main__content">{renderContent()}</div>
           </>
         ) : (
-          <div className="main__content">{renderContentDesktop()}</div>
+          <div className="main__content--desktop">{renderContentDesktop()}</div>
         )}
       </main>
     </div>

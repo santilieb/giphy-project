@@ -1,8 +1,10 @@
 function Header() {
   return (
-    <div className="header">
-      <h1>Giphy Project</h1>
-    </div>
+    <header className="header">
+      <div className="header__text-box">
+        <h1 className="heading-primary">GIPHY PROJECT</h1>
+      </div>
+    </header>
   );
 }
 

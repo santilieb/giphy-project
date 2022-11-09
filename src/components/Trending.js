@@ -34,13 +34,18 @@ function Trending() {
   }, []);
 
   return (
-    <section className="trending">
-      <h1>Trending</h1>
+    <section className="section-trending">
+      <h2 className="heading-secondary">Trending</h2>
       {error ? (
         <ErrorMessage message={error} />
       ) : (
         trendingGifs.map((gif, index) => (
-          <img src={gif} alt="Trending GIF" key={index} />
+          <img
+            className="trending-image"
+            src={gif}
+            alt="Trending GIF"
+            key={index}
+          />
         ))
       )}
     </section>

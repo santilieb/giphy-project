@@ -4,3 +4,5 @@ export const fetchData = async (url) => {
   const data = await response.json();
   return data;
 };
+
+//!Note: missing the promise race function
