@@ -13,7 +13,6 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <h1>Navbar</h1>
       <section className="navbar__list">
         <button
           id="random"

@@ -1,6 +1,10 @@
 .header {
+  background-color: $color-black;
+  padding: 2rem;
+  width: auto;
+
   &__text-box {
-  }
-  &__heading-primary {
+    color: $color-white;
+    font-size: 1.6rem;
   }
 }
