@@ -2,25 +2,26 @@
 
 import { useState, useEffect } from "react";
 import ErrorMessage from "./ErrorMessage.js";
+import { fetchData } from "../api/apiUtils.js";
+import { API_KEY, BASE_URL } from "../api/config.js";
 
 function Trending() {
-  const [gifs, setGifs] = useState([]);
+  const [trendingGifs, setTrendingGifs] = useState([]);
   const [error, setError] = useState("");
 
-  const fetchGifs = async () => {
+  // Fetch trending GIFs from the Giphy API
+  const fetchTrendingGifs = async () => {
     try {
-      const url = `https://api.giphy.com/v1/gifs/trending?api_key=Vg9p79URRw6MAXMa0U80g7UKMu61wOMe&limit=10&rating=g`;
-      const response = await fetch(url);
-
-      const data = await response.json();
+      const url = `${BASE_URL}trending?api_key=${API_KEY}&limit=10&rating=g`;
+      const data = await fetchData(url);
 
       // Check if the array is empty, if so throw an error
       if (data.data.length === 0) {
-        setGifs([]);
+        setTrendingGifs([]);
         throw new Error("No trending GIPHYs found");
       } else {
         setError(null);
-        setGifs(data.data.map((gif) => gif.images.original.url));
+        setTrendingGifs(data.data.map((gif) => gif.images.original.url));
       }
     } catch (error) {
       setError(error.message);
@@ -29,7 +30,7 @@ function Trending() {
 
   // Once the component loads, fetch the GIFs once
   useEffect(() => {
-    fetchGifs();
+    fetchTrendingGifs();
   }, []);
 
   return (
@@ -38,7 +39,7 @@ function Trending() {
       {error ? (
         <ErrorMessage message={error} />
       ) : (
-        gifs.map((gif, index) => (
+        trendingGifs.map((gif, index) => (
           <img src={gif} alt="Trending GIF" key={index} />
         ))
       )}

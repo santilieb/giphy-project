@@ -3,14 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./sass/index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ProjectProvider } from "./context/projectContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ProjectProvider>
-      <App />
-    </ProjectProvider>
+    <App />
   </React.StrictMode>
 );
 

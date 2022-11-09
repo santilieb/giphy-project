@@ -1,26 +1,27 @@
 import { useState, useEffect } from "react";
+import { fetchData } from "../api/apiUtils.js";
+import { API_KEY, BASE_URL } from "../api/config.js";
 import ErrorMessage from "./ErrorMessage.js";
 
 function Finder() {
-  const [gifs, setGifs] = useState([]);
+  const [finderGifs, setFinderGifs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
 
-  const fetchGifs = async () => {
+  // Fetch GIFs from the Giphy API based on the search term
+  const fetchFinderGifs = async () => {
     if (searchTerm !== "") {
       try {
-        const url = `https://api.giphy.com/v1/gifs/search?api_key=Vg9p79URRw6MAXMa0U80g7UKMu61wOMe&q=${searchTerm}&limit=10&offset=0&rating=g&lang=en`;
-        const response = await fetch(url);
+        const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=10&rating=g&lang=en`;
 
-        const data = await response.json();
-
+        const data = await fetchData(url);
         // Check if the array is empty, if so throw an error
         if (data.data.length === 0) {
-          setGifs([]);
+          setFinderGifs([]);
           throw new Error("No GIPHYs found, try another search term");
         } else {
           setError(null);
-          setGifs(data.data.map((gif) => gif.images.original.url));
+          setFinderGifs(data.data.map((gif) => gif.images.original.url));
         }
       } catch (error) {
         setError(error.message);
@@ -30,30 +31,10 @@ function Finder() {
     }
   };
 
-  // try {
-  //   const url = `https://api.giphy.com/v1/gifs/search?api_key=Vg9p79URRw6MAXMa0U80g7UKMu61wOMe&q=${searchTerm}&limit=10&offset=0&rating=g&lang=en`;
-  //   const response = await fetch(url);
-  //   const data = await response.json();
-  //   // Get the URL of the GIF based on the screen size
-  //   if (window.innerWidth < 768) {
-  //     setGifs(data.data.map((gif) => gif.images.fixed_height_small.url));
-  //   }
-  //   if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-  //     setGifs(data.data.map((gif) => gif.images.fixed_height.url));
-  //   }
-  //   if (window.innerWidth >= 1024) {
-  //     setGifs(data.data.map((gif) => gif.images.original.url));
-  //   } else {
-  //     throw new Error("No GIFs found");
-  //   }
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
   // Once the component loads, fetch the GIFs once
-  useEffect(() => {
-    fetchGifs();
-  }, []);
+  // useEffect(() => {
+  //   fetchFinderGifs();
+  // }, []);
 
   return (
     <section className="finder">
@@ -64,13 +45,15 @@ function Finder() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button onClick={fetchGifs}>Search</button>
+      <button onClick={fetchFinderGifs}>Search</button>
       <div className="finder__gifs">
         {/* If there is an error, show the error message, otherwise show the GIFs */}
         {error ? (
           <ErrorMessage message={error} />
         ) : (
-          gifs.map((gif, index) => <img src={gif} alt="GIF" key={index} />)
+          finderGifs.map((gif, index) => (
+            <img src={gif} alt="GIF" key={index} />
+          ))
         )}
       </div>
     </section>
