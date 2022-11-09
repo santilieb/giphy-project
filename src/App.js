@@ -4,17 +4,21 @@ import Random from "./components/Random.js";
 import Trending from "./components/Trending.js";
 import Navbar from "./components/Navbar.js";
 import Header from "./components/Header";
+import ProjectContext from "./context/ProjectContext";
+import { useContext } from "react";
 
 function App() {
+  const { activeNav } = useContext(ProjectContext);
+
   return (
     <div className="App">
       <Header />
       <Navbar />
 
       <main className="main">
-        <Random />
-        <Finder />
-        <Trending />
+        {activeNav === "random" && <Random />}
+        {activeNav === "finder" && <Finder />}
+        {activeNav === "trending" && <Trending />}
       </main>
     </div>
   );

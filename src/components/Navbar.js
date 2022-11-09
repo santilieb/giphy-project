@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext } from "react";
+import ProjectContext from "../context/ProjectContext";
 
 function Navbar() {
   // set the state of the navbar, by default it is random
-  const [activeNav, setActiveNav] = useState("random");
+  const { activeNav, setActiveNav } = useContext(ProjectContext);
 
   // handle the click event of the navbar
   const handleClick = (e) => {
@@ -17,7 +18,7 @@ function Navbar() {
         <button
           id="random"
           className={`navbar__list-btn ${
-            activeNav === "random" ? "active" : ""
+            activeNav === "random" ? "navbar__list-btn--active" : ""
           }`}
           onClick={handleClick}
         >
@@ -26,7 +27,7 @@ function Navbar() {
         <button
           id="finder"
           className={`navbar__list-btn ${
-            activeNav === "finder" ? "active" : ""
+            activeNav === "finder" ? "navbar__list-btn--active" : ""
           }`}
           onClick={handleClick}
         >
@@ -35,7 +36,7 @@ function Navbar() {
         <button
           id="trending"
           className={`navbar__list-btn ${
-            activeNav === "trending" ? "active" : ""
+            activeNav === "trending" ? "navbar__list-btn--active" : ""
           }`}
           onClick={handleClick}
         >

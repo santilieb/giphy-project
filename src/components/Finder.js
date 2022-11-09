@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { fetchData } from "../api/apiUtils.js";
 import { API_KEY, BASE_URL } from "../api/config.js";
 import ErrorMessage from "./ErrorMessage.js";

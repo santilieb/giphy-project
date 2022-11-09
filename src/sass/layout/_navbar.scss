@@ -1,0 +1,10 @@
+.navbar {
+  &__list {
+    &-btn {
+      &--active {
+        height: 20px;
+        background-color: $color-primary;
+      }
+    }
+  }
+}
