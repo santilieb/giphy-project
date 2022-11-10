@@ -24,7 +24,11 @@
     }
   }
 
-  &--finder-item,
+  &--finder-item {
+    @include respond(laptop) {
+      width: 100%;
+    }
+  }
   &--trending-item {
     @include respond(laptop) {
       width: 100%;

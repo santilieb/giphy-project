@@ -2,6 +2,7 @@ import { useState } from "react";
 import { fetchData } from "../api/apiUtils.js";
 import { API_KEY, BASE_URL } from "../api/config.js";
 import ErrorMessage from "./ErrorMessage.js";
+import { IconSearch } from "../img/sprite.jsx";
 
 function Finder() {
   const [finderGifs, setFinderGifs] = useState([]);
@@ -61,6 +62,7 @@ function Finder() {
         }}
       />
       <button className="btn btn--finder" onClick={fetchFinderGifs}>
+        <IconSearch />
         Search
       </button>
       {error && <ErrorMessage message={error} />}

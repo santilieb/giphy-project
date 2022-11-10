@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 const ProjectContext = createContext();
 
 export const ProjectProvider = ({ children }) => {
-  const [activeNav, setActiveNav] = useState("random");
+  const [activeNav, setActiveNav] = useState(0);
 
   return (
     <ProjectContext.Provider value={{ activeNav, setActiveNav }}>

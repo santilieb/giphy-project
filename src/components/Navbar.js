@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import ProjectContext from "../context/ProjectContext";
 import { IconImage, IconSearch, IconLike } from "../img/sprite";
 
@@ -7,9 +7,9 @@ function Navbar() {
   const { activeNav, setActiveNav } = useContext(ProjectContext);
 
   // handle the click event of the navbar
-  const handleClick = (e) => {
+  const handleClick = (tabIndex) => {
     // set the state of the navbar to the clicked element
-    setActiveNav(e.target.id);
+    setActiveNav(tabIndex);
   };
 
   return (
@@ -18,27 +18,27 @@ function Navbar() {
         <button
           id="random"
           className={`navbar__list-btn ${
-            activeNav === "random" ? "navbar__list-btn--active" : ""
+            activeNav === 0 ? "navbar__list-btn--active" : ""
           }`}
-          onClick={handleClick}
+          onClick={() => handleClick(0)}
         >
           <IconImage className="random__icon" />
         </button>
         <button
           id="finder"
           className={`navbar__list-btn ${
-            activeNav === "finder" ? "navbar__list-btn--active" : ""
+            activeNav === 1 ? "navbar__list-btn--active" : ""
           }`}
-          onClick={handleClick}
+          onClick={() => handleClick(1)}
         >
           <IconSearch className="finder__icon" />
         </button>
         <button
           id="trending"
           className={`navbar__list-btn ${
-            activeNav === "trending" ? "navbar__list-btn--active" : ""
+            activeNav === 2 ? "navbar__list-btn--active" : ""
           }`}
-          onClick={handleClick}
+          onClick={() => handleClick(2)}
         >
           <IconLike className="trending__icon" />
         </button>

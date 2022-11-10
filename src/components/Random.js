@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { API_KEY, BASE_URL } from "../api/config.js";
 import { fetchData } from "../api/apiUtils.js";
+import { IconNext } from "../img/sprite.jsx";
 
 function Random() {
   // Fetch one random GIF from the Giphy API
@@ -23,7 +24,7 @@ function Random() {
       <h2 className="heading-secondary">Random</h2>
       <img className="image image--random" src={randomGif} alt="random GIF" />
       <button className="btn btn--random" onClick={fetchRandomGif}>
-        Next
+        <IconNext /> Next
       </button>
     </section>
   );

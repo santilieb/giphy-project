@@ -14,11 +14,11 @@ function App() {
   //render content (below 1024px)
   const renderContent = () => {
     switch (activeNav) {
-      case "random":
+      case 0:
         return <Random />;
-      case "finder":
+      case 1:
         return <Finder />;
-      case "trending":
+      case 2:
         return <Trending />;
       default:
         return <Random />;
