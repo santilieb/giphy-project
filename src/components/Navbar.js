@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import ProjectContext from "../context/ProjectContext";
+import { IconImage, IconSearch, IconLike } from "../img/sprite";
 
 function Navbar() {
   // set the state of the navbar, by default it is random
@@ -21,7 +22,7 @@ function Navbar() {
           }`}
           onClick={handleClick}
         >
-          Random icon
+          <IconImage className="random__icon" />
         </button>
         <button
           id="finder"
@@ -30,7 +31,7 @@ function Navbar() {
           }`}
           onClick={handleClick}
         >
-          Finder icon
+          <IconSearch className="finder__icon" />
         </button>
         <button
           id="trending"
@@ -39,7 +40,7 @@ function Navbar() {
           }`}
           onClick={handleClick}
         >
-          Trending icon
+          <IconLike className="trending__icon" />
         </button>
       </section>
     </nav>
