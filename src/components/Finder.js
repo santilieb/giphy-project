@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchData } from "../api/apiUtils.js";
+import { fetchData, storeGifs } from "../api/apiUtils.js";
 import { API_KEY, BASE_URL } from "../api/config.js";
 import ErrorMessage from "./ErrorMessage.js";
 import { IconSearch } from "../img/sprite.jsx";
@@ -14,14 +14,16 @@ function Finder() {
     if (searchTerm !== "") {
       try {
         const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=10&rating=g&lang=en`;
+        // Destructure the data array from the response
+        const { data } = await fetchData(url);
+        const gifs = data.map((gif) => storeGifs(gif));
 
-        const data = await fetchData(url);
         // Check if the array is empty, if so throw an error
-        if (data.data.length === 0) {
+        if (data.length === 0) {
           throw new Error("No GIPHYs were found, try another search term");
         } else {
           setError(null);
-          setFinderGifs(data.data.map((gif) => gif.images.original.url));
+          setFinderGifs(gifs);
           setSearchTerm("");
         }
       } catch (error) {
@@ -71,8 +73,8 @@ function Finder() {
           <img
             key={index}
             className="image image--finder-item"
-            src={gif}
-            alt="finder GIF"
+            src={gif.large}
+            alt={gif.title}
           />
         ))}
       </div>

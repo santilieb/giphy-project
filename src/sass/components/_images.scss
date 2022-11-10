@@ -7,6 +7,12 @@
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
 
+  @include respond(tab-port) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include respond(tab-land) {
+    grid-template-columns: repeat(4, 1fr);
+  }
   @include respond(laptop) {
     display: block;
   }
@@ -14,8 +20,6 @@
 
 .image {
   width: 100%;
-
-  //! Review how to make this DRY, eliminate the modifier if it remains the same further down
 
   &--random {
     padding: 2rem 2rem 0 2rem;

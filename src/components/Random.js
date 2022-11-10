@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 import { API_KEY, BASE_URL } from "../api/config.js";
-import { fetchData } from "../api/apiUtils.js";
+import { fetchData, storeGifs } from "../api/apiUtils.js";
 import { IconNext } from "../img/sprite.jsx";
 
 function Random() {
+  const [randomGif, setRandomGif] = useState({});
   // Fetch one random GIF from the Giphy API
-  const [randomGif, setRandomGif] = useState("");
-
   const fetchRandomGif = async () => {
     const url = `${BASE_URL}random?api_key=${API_KEY}&rating=g`;
-    const data = await fetchData(url);
-    setRandomGif(data.data.images.original.url);
+    // Destructure the data object from the response
+    const { data } = await fetchData(url);
+    const gif = storeGifs(data);
+    setRandomGif(gif);
   };
 
   // Once the component loads, fetch the GIF once
@@ -22,7 +23,11 @@ function Random() {
   return (
     <section className="section section--random">
       <h2 className="heading-secondary">Random</h2>
-      <img className="image image--random" src={randomGif} alt="random GIF" />
+      <img
+        className="image image--random"
+        src={randomGif.large}
+        alt={randomGif.title}
+      />
       <button className="btn btn--random" onClick={fetchRandomGif}>
         <IconNext /> Next
       </button>
