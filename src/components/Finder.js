@@ -64,11 +64,11 @@ function Finder() {
         Search
       </button>
       {error && <ErrorMessage message={error} />}
-      <div className="images-finder">
+      <div className="images-container">
         {finderGifs.map((gif, index) => (
           <img
             key={index}
-            className="image--finder"
+            className="image image--finder-item"
             src={gif}
             alt="finder GIF"
           />

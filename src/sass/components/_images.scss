@@ -1,25 +1,32 @@
+.images-container {
+  width: 100%;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto repeat(4, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  @include respond(laptop) {
+    display: block;
+  }
+}
+
 .image {
+  width: 100%;
+
+  //! Review how to make this DRY, eliminate the modifier if it remains the same further down
+
   &--random {
     padding: 2rem 2rem 0 2rem;
-    width: 100vw;
-
     @include respond(laptop) {
       width: 100%;
     }
   }
 
-  &--finder {
-    padding: 2rem 2rem 0 2rem;
-    width: 100vw;
-
-    @include respond(laptop) {
-      width: 100%;
-    }
-  }
-
-  &--trending {
-    padding: 2rem 2rem 0 2rem;
-    width: 100vw;
+  &--finder-item,
+  &--trending-item {
+    padding-bottom: 1rem;
 
     @include respond(laptop) {
       width: 100%;

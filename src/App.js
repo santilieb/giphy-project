@@ -51,10 +51,10 @@ function App() {
         {windowWidth < 1024 ? (
           <>
             <Navbar />
-            <div className="section__container">{renderContent()}</div>
+            <div className="section-container">{renderContent()}</div>
           </>
         ) : (
-          <div className="section__container">{renderContentDesktop()}</div>
+          <div className="section-container">{renderContentDesktop()}</div>
         )}
       </main>
     </div>

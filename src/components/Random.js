@@ -21,7 +21,7 @@ function Random() {
   return (
     <section className="section section--random">
       <h2 className="heading-secondary">Random</h2>
-      <img className="image--random" src={randomGif} alt="random GIF" />
+      <img className="image image--random" src={randomGif} alt="random GIF" />
       <button className="btn btn--random" onClick={fetchRandomGif}>
         Next
       </button>
