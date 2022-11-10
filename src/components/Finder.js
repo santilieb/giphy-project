@@ -72,7 +72,7 @@ function Finder() {
         {finderGifs.map((gif, index) => (
           <img
             key={index}
-            className="image image--finder-item"
+            className="images-container__image images-container__image--finder-item"
             src={gif.large}
             alt={gif.title}
           />

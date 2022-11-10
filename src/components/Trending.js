@@ -38,10 +38,10 @@ function Trending() {
     <section className="section section--trending">
       <h2 className="heading-secondary">Trending</h2>
       {error && <ErrorMessage message={error} />}
-      <div className="images-container">
+      <div className="images-container images-container--trending">
         {trendingGifs.map((gif, index) => (
           <img
-            className="image image--trending-item"
+            className="images-container__image images-container__image--trending-item"
             src={gif.large}
             alt={gif.title}
             key={index}

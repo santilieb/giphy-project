@@ -14,28 +14,30 @@
     grid-template-columns: repeat(4, 1fr);
   }
   @include respond(laptop) {
-    display: block;
-  }
-}
-
-.image {
-  width: 100%;
-
-  &--random {
-    padding: 2rem 2rem 0 2rem;
-    @include respond(laptop) {
-      width: 100%;
+    &--trending {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 
-  &--finder-item {
-    @include respond(laptop) {
-      width: 100%;
+  &__image {
+    width: 100%;
+
+    &--random {
+      padding: 2rem 2rem 0 2rem;
+      @include respond(laptop) {
+        width: 100%;
+      }
     }
-  }
-  &--trending-item {
-    @include respond(laptop) {
-      width: 100%;
+
+    &--finder-item {
+      @include respond(laptop) {
+        width: 100%;
+      }
+    }
+    &--trending-item {
+      @include respond(laptop) {
+        width: 100%;
+      }
     }
   }
 }

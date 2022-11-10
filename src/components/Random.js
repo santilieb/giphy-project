@@ -24,7 +24,7 @@ function Random() {
     <section className="section section--random">
       <h2 className="heading-secondary">Random</h2>
       <img
-        className="image image--random"
+        className="images-container images-container__image images-container__image--random-item"
         src={randomGif.large}
         alt={randomGif.title}
       />
