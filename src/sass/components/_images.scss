@@ -1,0 +1,28 @@
+.image {
+  &--random {
+    padding: 2rem 2rem 0 2rem;
+    width: 100vw;
+
+    @include respond(laptop) {
+      width: 100%;
+    }
+  }
+
+  &--finder {
+    padding: 2rem 2rem 0 2rem;
+    width: 100vw;
+
+    @include respond(laptop) {
+      width: 100%;
+    }
+  }
+
+  &--trending {
+    padding: 2rem 2rem 0 2rem;
+    width: 100vw;
+
+    @include respond(laptop) {
+      width: 100%;
+    }
+  }
+}

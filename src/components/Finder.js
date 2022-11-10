@@ -17,17 +17,21 @@ function Finder() {
         const data = await fetchData(url);
         // Check if the array is empty, if so throw an error
         if (data.data.length === 0) {
-          setFinderGifs([]);
-          throw new Error("No GIPHYs found, try another search term");
+          throw new Error("No GIPHYs were found, try another search term");
         } else {
           setError(null);
           setFinderGifs(data.data.map((gif) => gif.images.original.url));
+          setSearchTerm("");
         }
       } catch (error) {
+        setFinderGifs([]);
         setError(error.message);
+        setSearchTerm("");
       }
     } else {
-      setError("Type something into the searchbar to find GIPHYs");
+      setFinderGifs([]);
+      setError("Type something into the searchbar to find GIPHYs!");
+      setSearchTerm("");
     }
   };
 
@@ -44,7 +48,7 @@ function Finder() {
   // }, []);
 
   return (
-    <section className="section-finder">
+    <section className="section section--finder">
       <h2 className="heading-secondary">Finder</h2>
       <input
         className="searchbar"
@@ -60,11 +64,11 @@ function Finder() {
         Search
       </button>
       {error && <ErrorMessage message={error} />}
-      <div className="finder-images">
+      <div className="images-finder">
         {finderGifs.map((gif, index) => (
           <img
             key={index}
-            className="finder-image"
+            className="image--finder"
             src={gif}
             alt="finder GIF"
           />

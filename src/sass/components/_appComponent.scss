@@ -1,0 +1,25 @@
+.section {
+  &__container {
+    @include respond(laptop) {
+      display: grid;
+      grid-template-columns: repeat(11, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 10px;
+      grid-row-gap: 0px;
+      // Add a black vertical line between the columns
+    }
+  }
+  @include respond(laptop) {
+    &--random {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+
+    &--finder {
+      grid-area: 1 / 4 / 2 / 10;
+    }
+
+    &--trending {
+      grid-area: 1 / 10 / 2 / 12;
+    }
+  }
+}

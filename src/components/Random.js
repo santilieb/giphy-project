@@ -19,9 +19,9 @@ function Random() {
 
   //display a random image from the giphy API
   return (
-    <section className="section-random">
+    <section className="section section--random">
       <h2 className="heading-secondary">Random</h2>
-      <img className="random-image" src={randomGif} alt="random GIF" />
+      <img className="image--random" src={randomGif} alt="random GIF" />
       <button className="btn btn--random" onClick={fetchRandomGif}>
         Next
       </button>
