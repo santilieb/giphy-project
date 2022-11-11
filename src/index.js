@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 // import "./sass/index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ProjectProvider } from "./context/ProjectContext";
+import { ProjectProvider } from "./context/ProjectContext.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

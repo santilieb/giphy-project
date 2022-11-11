@@ -11,8 +11,7 @@ export const storeGifs = (data) => {
   return {
     title: data?.title,
     still: data?.images.downsized_still.url,
-    small: data?.images.fixed_width_small.url,
-    medium: data?.images.fixed_height.url,
+    small: data?.images.fixed_height.url,
     large: data?.images.original.url,
   };
 };

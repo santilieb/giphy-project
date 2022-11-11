@@ -1,6 +1,6 @@
 import { useContext, useCallback } from "react";
-import ProjectContext from "../context/ProjectContext";
-import { IconImage, IconSearch, IconLike } from "../img/sprite";
+import ProjectContext from "../context/ProjectContext.jsx";
+import { IconImage, IconSearch, IconLike } from "../img/sprite.jsx";
 
 function Navbar() {
   // set the state of the navbar, by default it is random

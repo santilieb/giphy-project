@@ -1,11 +1,11 @@
 import "./sass/main.scss";
-import Finder from "./components/Finder.js";
-import Random from "./components/Random.js";
-import Trending from "./components/Trending.js";
-import Navbar from "./components/Navbar.js";
-import Header from "./components/Header";
+import Finder from "./components/Finder.jsx";
+import Random from "./components/Random.jsx";
+import Trending from "./components/Trending.jsx";
+import Navbar from "./components/Navbar.jsx";
+import Header from "./components/Header.jsx";
 import { useContext, useState } from "react";
-import ProjectContext from "./context/ProjectContext";
+import ProjectContext from "./context/ProjectContext.jsx";
 
 function App() {
   const { activeNav } = useContext(ProjectContext);

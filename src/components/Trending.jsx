@@ -1,9 +1,10 @@
 // Functional component that fetches trending GIPHYs
 
 import { useState, useEffect } from "react";
-import ErrorMessage from "./ErrorMessage.js";
+import ErrorMessage from "./ErrorMessage.jsx";
 import { fetchData, storeGifs } from "../api/apiUtils.js";
 import { API_KEY, BASE_URL } from "../api/config.js";
+import ResponsiveImage from "./ResponsiveImage.jsx";
 
 function Trending() {
   const [trendingGifs, setTrendingGifs] = useState([]);
@@ -40,11 +41,10 @@ function Trending() {
       {error && <ErrorMessage message={error} />}
       <div className="images-container images-container--trending">
         {trendingGifs.map((gif, index) => (
-          <img
-            className="images-container__image images-container__image--trending-item"
-            src={gif.large}
+          <ResponsiveImage
             alt={gif.title}
-            key={index}
+            smallSrcSet={gif.small}
+            largeSrcSet={gif.large}
           />
         ))}
       </div>

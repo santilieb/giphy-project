@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { fetchData, storeGifs } from "../api/apiUtils.js";
 import { API_KEY, BASE_URL } from "../api/config.js";
-import ErrorMessage from "./ErrorMessage.js";
+import ErrorMessage from "./ErrorMessage.jsx";
 import { IconSearch } from "../img/sprite.jsx";
+import ResponsiveImage from "./ResponsiveImage.jsx";
 
 function Finder() {
   const [finderGifs, setFinderGifs] = useState([]);
@@ -70,11 +71,10 @@ function Finder() {
       {error && <ErrorMessage message={error} />}
       <div className="images-container">
         {finderGifs.map((gif, index) => (
-          <img
-            key={index}
-            className="images-container__image images-container__image--finder-item"
-            src={gif.large}
+          <ResponsiveImage
             alt={gif.title}
+            smallSrcSet={gif.small}
+            largeSrcSet={gif.large}
           />
         ))}
       </div>

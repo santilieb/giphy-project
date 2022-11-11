@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { API_KEY, BASE_URL } from "../api/config.js";
 import { fetchData, storeGifs } from "../api/apiUtils.js";
 import { IconNext } from "../img/sprite.jsx";
+import ResponsiveImage from "./ResponsiveImage.jsx";
 
 function Random() {
   const [randomGif, setRandomGif] = useState({});
@@ -10,6 +11,7 @@ function Random() {
     const url = `${BASE_URL}random?api_key=${API_KEY}&rating=g`;
     // Destructure the data object from the response
     const { data } = await fetchData(url);
+    console.log(data);
     const gif = storeGifs(data);
     setRandomGif(gif);
   };
@@ -23,10 +25,11 @@ function Random() {
   return (
     <section className="section section--random">
       <h2 className="heading-secondary">Random</h2>
-      <img
-        className="images-container images-container__image images-container__image--random-item"
-        src={randomGif.large}
+      <ResponsiveImage
         alt={randomGif.title}
+        smallSrcSet={randomGif.small}
+        largeSrcSet={randomGif.large}
+        className={"images-container"}
       />
       <button className="btn btn--random" onClick={fetchRandomGif}>
         <IconNext /> Next

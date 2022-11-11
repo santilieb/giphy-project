@@ -4,8 +4,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: masonry;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
 
   @include respond(tab-port) {
     grid-template-columns: repeat(3, 1fr);
@@ -21,23 +21,5 @@
 
   &__image {
     width: 100%;
-
-    &--random {
-      padding: 2rem 2rem 0 2rem;
-      @include respond(laptop) {
-        width: 100%;
-      }
-    }
-
-    &--finder-item {
-      @include respond(laptop) {
-        width: 100%;
-      }
-    }
-    &--trending-item {
-      @include respond(laptop) {
-        width: 100%;
-      }
-    }
   }
 }
