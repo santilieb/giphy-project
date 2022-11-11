@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { API_KEY, BASE_URL } from "../api/config.js";
-import { fetchData, storeGifs } from "../api/apiUtils.js";
+import { storeGifs } from "../api/apiUtils.js";
 import { IconNext } from "../img/sprite.jsx";
 import ResponsiveImage from "./ResponsiveImage.jsx";
 import useFetch from "../hooks/useFetch.jsx";
@@ -10,11 +10,11 @@ import ErrorMessage from "./ErrorMessage.jsx";
 function Random() {
   const [randomGif, setRandomGif] = useState({});
   const url = BASE_URL + "random?api_key=" + API_KEY + "&rating=g&lang=en";
-  const { response, isLoading, error, fetchNewData } = useFetch(url);
+  const { response, isLoading, error, doFetch } = useFetch(url);
 
   const fetchOnClicked = () => {
     setRandomGif({});
-    fetchNewData();
+    doFetch();
   };
 
   useEffect(() => {

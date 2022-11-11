@@ -1,50 +1,115 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchData, storeGifs } from "../api/apiUtils.js";
 import { API_KEY, BASE_URL } from "../api/config.js";
 import ErrorMessage from "./ErrorMessage.jsx";
 import { IconSearch } from "../img/sprite.jsx";
 import ResponsiveImage from "./ResponsiveImage.jsx";
+import useFetch from "../hooks/useFetch.jsx";
+import LoadingMessage from "./LoadingMessage";
 
 function Finder() {
   const [finderGifs, setFinderGifs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState("");
+  const [finderError, setFinderError] = useState("");
+  const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=10&rating=g&lang=en`;
+  const { response, isLoading, error, doFetch } = useFetch(url);
 
-  // Fetch GIFs from the Giphy API based on the search term
+  // Fetch data from the API using the search term and store the data in the state using useFetch hook
+
   const fetchFinderGifs = async () => {
-    if (searchTerm !== "") {
-      try {
-        const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=10&rating=g&lang=en`;
-        // Destructure the data array from the response
-        const { data } = await fetchData(url);
-        const gifs = data.map((gif) => storeGifs(gif));
+    // If the search term is empty, return an error message
 
-        // Check if the array is empty, if so throw an error
-        if (data.length === 0) {
-          throw new Error("No GIPHYs were found, try another search term");
-        } else {
-          setError(null);
-          setFinderGifs(gifs);
-          setSearchTerm("");
-        }
-      } catch (error) {
+    //If error exists then return the error message
+    if (error) {
+      setFinderError(error);
+      return;
+    }
+
+    setFinderError("");
+    if (response) {
+      const gifs = response.map((gif) => storeGifs(gif));
+      if (response.length === 0) {
         setFinderGifs([]);
-        setError(error.message);
-        setSearchTerm("");
+        setFinderError("No GIPHYs found!");
       }
+      setFinderError("");
+      setFinderGifs(gifs);
+    }
+  };
+
+  // Handle the search term input
+  const handleSearchTerm = (e) => {
+    e.preventDefault();
+    setSearchTerm(e.target.value);
+  };
+
+  // Handle the search button click
+  const handleSearchClick = () => {
+    if (searchTerm !== "") {
+      setFinderGifs([]);
+      doFetch(url);
+      setSearchTerm("");
     } else {
       setFinderGifs([]);
-      setError("Type something into the searchbar to find GIPHYs!");
-      setSearchTerm("");
+      setFinderError("Please enter a search term to find GIPHYs!");
     }
   };
 
-  // Search on ENTER key press
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      fetchFinderGifs();
+  // Handle the enter key press
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      if (searchTerm !== "") {
+        setFinderGifs([]);
+        doFetch();
+        setSearchTerm("");
+      } else {
+        setFinderGifs([]);
+        setFinderError("Please enter a search term to find GIPHYs!");
+        setSearchTerm("");
+      }
     }
   };
+
+  useEffect(() => {
+    fetchFinderGifs();
+  }, [response]);
+
+  // // Fetch GIFs from the Giphy API based on the search term
+  // const fetchFinderGifs = async () => {
+  //   if (searchTerm !== "") {
+  //     try {
+  //       const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=10&rating=g&lang=en`;
+  //       // Destructure the data array from the response
+  //       const { data } = await fetchData(url);
+  //       const gifs = data.map((gif) => storeGifs(gif));
+
+  //       // Check if the array is empty, if so throw an error
+  //       if (data.length === 0) {
+  //         throw new Error("No GIPHYs were found, try another search term");
+  //       } else {
+  //         setError(null);
+  //         setFinderGifs(gifs);
+  //         setSearchTerm("");
+  //       }
+  //     } catch (error) {
+  //       setFinderGifs([]);
+  //       setError(error.message);
+  //       setSearchTerm("");
+  //     }
+  //   } else {
+  //     setFinderGifs([]);
+  //     setError("Type something into the searchbar to find GIPHYs!");
+  //     setSearchTerm("");
+  //   }
+  // };
+
+  // // Search on ENTER key press
+  // const handleKeyPress = (event) => {
+  //   if (event.key === "Enter") {
+  //     setFinderGifs([]);
+  //     fetchFinderGifs();
+  //   }
+  // };
 
   // Once the component loads, fetch the GIFs once
   // useEffect(() => {
@@ -59,16 +124,31 @@ function Finder() {
         type="text"
         placeholder="Search for a GIPHY"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => handleSearchTerm(e)}
         onKeyUp={(e) => {
           handleKeyPress(e);
         }}
       />
-      <button className="btn btn--finder" onClick={fetchFinderGifs}>
+      <button className="btn btn--finder" onClick={handleSearchClick}>
         <IconSearch />
         Search
       </button>
       {error && <ErrorMessage message={error} />}
+      {finderError && <ErrorMessage message={finderError} />}
+      {isLoading && <LoadingMessage />}
+      <div className="images-container">
+        {finderGifs.map((gif, index) => (
+          <ResponsiveImage
+            key={index}
+            alt={gif.title}
+            smallSrcSet={gif.small}
+            largeSrcSet={gif.large}
+            className={"images-container"}
+          />
+        ))}
+      </div>
+
+      {/* {error && <ErrorMessage message={error} />}
       <div className="images-container">
         {finderGifs.map((gif, index) => (
           <ResponsiveImage
@@ -77,7 +157,7 @@ function Finder() {
             largeSrcSet={gif.large}
           />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 }
