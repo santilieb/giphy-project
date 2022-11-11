@@ -12,7 +12,7 @@ function ResponsiveImage({ smallSrcSet, largeSrcSet, alt, className = "" }) {
       <img
         src={largeSrcSet}
         alt={alt}
-        className={`images-container__image ${className}`}
+        className={`${className} images-container__image`}
       />
     </picture>
   );
