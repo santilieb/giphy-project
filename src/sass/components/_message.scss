@@ -1,0 +1,26 @@
+.message {
+  padding: 1rem;
+  margin-top: 5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  border: dashed;
+  font-size: 1.6rem;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
+  &--loading {
+    color: $color-secondary;
+  }
+
+  &--error {
+    color: $color-error;
+
+    & > svg {
+      fill: $color-error;
+      width: 20%;
+      height: 20%;
+    }
+  }
+}

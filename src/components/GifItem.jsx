@@ -1,4 +1,4 @@
-function ResponsiveImage({ smallSrcSet, largeSrcSet, alt, className = "" }) {
+function GifItem({ smallSrcSet, largeSrcSet, alt, className = "" }) {
   return (
     <picture>
       <source
@@ -18,4 +18,4 @@ function ResponsiveImage({ smallSrcSet, largeSrcSet, alt, className = "" }) {
   );
 }
 
-export default ResponsiveImage;
+export default GifItem;

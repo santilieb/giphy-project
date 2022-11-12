@@ -1,7 +1,10 @@
-function LoadingMessage() {
+import { IconLoading } from "../img/sprite";
+
+function LoadingMessage({ message }) {
   return (
-    <div className="message--loading">
-      <p> GIPHYs will be here in a jiffy... </p>
+    <div className="message message--loading">
+      <IconLoading />
+      <p>{message}</p>
     </div>
   );
 }
