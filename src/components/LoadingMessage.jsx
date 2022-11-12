@@ -1,9 +1,9 @@
-import { IconLoading } from "../img/sprite";
+import { IconSpinner } from "../img/sprite";
 
 function LoadingMessage({ message }) {
   return (
     <div className="message message--loading">
-      <IconLoading />
+      <IconSpinner />
       <p>{message}</p>
     </div>
   );
