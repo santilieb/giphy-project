@@ -72,7 +72,7 @@ function Finder() {
 
   return (
     <section className="section section--finder">
-      <h2 className="heading-secondary">Finder</h2>
+      <h2 className="heading-secondary heading-secondary--finder">Finder</h2>
       <input
         className="searchbar"
         type="text"

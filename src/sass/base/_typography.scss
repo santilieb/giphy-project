@@ -5,6 +5,7 @@ body {
 }
 
 .heading-secondary {
+  color: $color-white;
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 0.07rem;
@@ -12,4 +13,17 @@ body {
   margin-bottom: 1rem;
   margin-left: 2rem;
   text-align: left;
+  text-transform: uppercase;
+
+  &--random {
+    color: $color-bright-purple;
+  }
+
+  &--finder {
+    color: $color-fluorescent-orange;
+  }
+
+  &--trending {
+    color: $color-fluorescent-green;
+  }
 }

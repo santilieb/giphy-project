@@ -21,7 +21,9 @@ function Trending() {
 
   return (
     <section className="section section--trending">
-      <h2 className="heading-secondary">Trending</h2>
+      <h2 className="heading-secondary heading-secondary--trending">
+        Trending
+      </h2>
       {isLoading && <LoadingMessage message={loadingMessage} />}
       {error && <ErrorMessage message={error} />}
       <div className="images-container images-container--trending">

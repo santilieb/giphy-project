@@ -27,7 +27,7 @@ function Random() {
 
   return (
     <section className="section section--random">
-      <h2 className="heading-secondary">Random</h2>
+      <h2 className="heading-secondary heading-secondary--random">Random</h2>
       {isLoading && <LoadingMessage message={loadingMessage} />}
       {error && <ErrorMessage message={error} />}
       {!isLoading && randomGif && (

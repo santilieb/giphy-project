@@ -3,8 +3,17 @@
   padding: 2rem;
   width: auto;
 
+  @include respond(laptop) {
+    text-align: left;
+    letter-spacing: 0.7rem;
+  }
+
   &__text-box {
     color: $color-white;
     font-size: 1.6rem;
+
+    @include respond(laptop) {
+      font-size: 2.5rem;
+    }
   }
 }

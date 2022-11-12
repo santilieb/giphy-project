@@ -7,11 +7,11 @@
 @import "base/typography";
 @import "base/utilities";
 
-@import "components/appComponent";
 @import "components/images";
 @import "components/message";
 @import "components/spinner";
 
+@import "layout/app";
 @import "layout/footer";
 @import "layout/grid";
 @import "layout/header";

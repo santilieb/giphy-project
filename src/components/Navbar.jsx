@@ -1,47 +1,36 @@
-import { useContext, useCallback } from "react";
+import { useContext } from "react";
 import ProjectContext from "../context/ProjectContext.jsx";
 import { IconImage, IconSearch, IconLike } from "../img/sprite.jsx";
+import NavbarItem from "./NavbarItem.jsx";
 
 function Navbar() {
-  // set the state of the navbar, by default it is random
-  const { activeNav, setActiveNav } = useContext(ProjectContext);
+  // set the state of the navbar, by default it is 0 (random)
+  // const { activeNav, setActiveNav } = useContext(ProjectContext);
 
-  // handle the click event of the navbar
-  const handleClick = (tabIndex) => {
-    // set the state of the navbar to the clicked element
-    setActiveNav(tabIndex);
-  };
+  // // handle the click event of the navbar
+  // const handleClick = (tabIndex) => {
+  //   // set the state of the navbar to the clicked element
+  //   setActiveNav(tabIndex);
+  // };
 
   return (
     <nav className="navbar">
       <section className="navbar__list">
-        <button
+        <NavbarItem
           id="random"
-          className={`navbar__list-btn ${
-            activeNav === 0 ? "navbar__list-btn--active" : ""
-          }`}
-          onClick={() => handleClick(0)}
-        >
-          <IconImage className="random__icon" />
-        </button>
-        <button
+          icon={<IconImage className="random__icon" />}
+          index={0}
+        />
+        <NavbarItem
           id="finder"
-          className={`navbar__list-btn ${
-            activeNav === 1 ? "navbar__list-btn--active" : ""
-          }`}
-          onClick={() => handleClick(1)}
-        >
-          <IconSearch className="finder__icon" />
-        </button>
-        <button
+          icon={<IconSearch className="finder__icon" />}
+          index={1}
+        />
+        <NavbarItem
           id="trending"
-          className={`navbar__list-btn ${
-            activeNav === 2 ? "navbar__list-btn--active" : ""
-          }`}
-          onClick={() => handleClick(2)}
-        >
-          <IconLike className="trending__icon" />
-        </button>
+          icon={<IconLike className="trending__icon" />}
+          index={2}
+        />
       </section>
     </nav>
   );

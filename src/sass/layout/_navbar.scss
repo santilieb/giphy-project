@@ -13,9 +13,40 @@
       padding: 1rem 2rem;
       width: 100%;
 
-      &--active {
-        background-color: $color-primary;
-        color: $color-violet;
+      &--random {
+        & > svg {
+          fill: $color-bright-purple;
+        }
+        &--active {
+          background-color: $color-bright-purple;
+          & > svg {
+            fill: $color-black;
+          }
+        }
+      }
+
+      &--finder {
+        & > svg {
+          fill: $color-fluorescent-orange;
+        }
+        &--active {
+          background-color: $color-fluorescent-orange;
+          & > svg {
+            fill: $color-black;
+          }
+        }
+      }
+
+      &--trending {
+        & > svg {
+          fill: $color-fluorescent-green;
+        }
+        &--active {
+          background-color: $color-fluorescent-green;
+          & > svg {
+            fill: $color-black;
+          }
+        }
       }
     }
   }
