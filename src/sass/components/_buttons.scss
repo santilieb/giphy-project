@@ -1,7 +1,29 @@
 .btn {
-  &--random {
+  border: solid 0.5rem;
+  width: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  &__text {
+    margin-left: 1rem;
+    font-size: 2rem;
   }
 
-  &--search {
+  &--random {
+    color: $color-bright-purple;
+    & > svg {
+      fill: $color-bright-purple;
+    }
+  }
+
+  &--finder {
+    color: $color-fluorescent-orange;
+    & > svg {
+      fill: $color-fluorescent-orange;
+    }
   }
 }

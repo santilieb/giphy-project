@@ -1,7 +1,7 @@
 import "./sass/main.scss";
-import Finder from "./components/Finder.jsx";
-import Random from "./components/Random.jsx";
-import Trending from "./components/Trending.jsx";
+import Finder from "./components/SectionFinder.jsx";
+import Random from "./components/SectionRandom.jsx";
+import Trending from "./components/SectionTrending.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Header from "./components/Header.jsx";
 import { useContext, useState } from "react";
