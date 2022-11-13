@@ -8,6 +8,7 @@
   align-items: center;
   padding: 1rem 2rem;
   border-radius: 0.4rem;
+  margin-top: 2rem;
 
   &__text {
     margin-left: 1rem;
@@ -22,6 +23,7 @@
   }
 
   &--finder {
+    margin-bottom: 2rem;
     color: $color-fluorescent-orange;
     & > svg {
       fill: $color-fluorescent-orange;

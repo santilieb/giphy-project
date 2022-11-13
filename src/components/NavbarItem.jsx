@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ProjectContext from "../context/ProjectContext.jsx";
+import ProjectContext from "../contexts/ProjectContext.jsx";
 
 function NavbarItem({ id, icon, index }) {
   // set the state of the navbar, by default it is 0 (random tab)

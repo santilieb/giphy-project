@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchData, storeGifs } from "../api/apiUtils.js";
+import { storeGifs } from "../api/apiUtils.js";
 import { API_KEY, BASE_URL } from "../api/config.js";
 import ErrorMessage from "./ErrorMessage.jsx";
 import { IconSearch } from "../img/sprite.jsx";
@@ -95,8 +95,10 @@ function Finder() {
       {error && <ErrorMessage message={error} />}
       {finderError && <ErrorMessage message={finderError} />}
       {!searchTerm && isLoading && <LoadingMessage message={loadingMessage} />}
-      <div className="images-container">
+      <div className="images-container images-container--finder">
         {!isLoading &&
+          !error &&
+          !finderError &&
           finderGifs.map((gif, index) => (
             <GifItem
               key={index}

@@ -31,22 +31,23 @@ function Random() {
       <h2 className="heading-secondary heading-secondary--random">Random</h2>
       {isLoading && <LoadingMessage message={loadingMessage} />}
       {error && <ErrorMessage message={error} />}
-      {!isLoading && randomGif && (
-        <>
-          <GifItem
-            alt={randomGif.title}
-            smallSrcSet={randomGif.small}
-            largeSrcSet={randomGif.large}
-            className={"images-container"}
-          />
-          <Button
-            icon={<IconNext />}
-            text={"Next"}
-            className={"random"}
-            onClick={fetchOnClicked}
-          />
-        </>
-      )}
+      <div className="images-container images-container--random">
+        {!isLoading && !error && randomGif && (
+          <>
+            <GifItem
+              alt={randomGif.title}
+              smallSrcSet={randomGif.small}
+              largeSrcSet={randomGif.large}
+            />
+          </>
+        )}
+      </div>
+      <Button
+        icon={<IconNext />}
+        text={"Next"}
+        className={"random"}
+        onClick={fetchOnClicked}
+      />
     </section>
   );
 }

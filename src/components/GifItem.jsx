@@ -9,11 +9,7 @@ function GifItem({ smallSrcSet, largeSrcSet, alt, className = "" }) {
       />
       <source srcSet={largeSrcSet} alt={alt} />
       {/* The img with src attribute is required for older browsers */}
-      <img
-        src={largeSrcSet}
-        alt={alt}
-        className={`${className} images-container__image`}
-      />
+      <img src={largeSrcSet} alt={alt} className="images-container__image" />
     </picture>
   );
 }

@@ -28,6 +28,7 @@ function Trending() {
       {error && <ErrorMessage message={error} />}
       <div className="images-container images-container--trending">
         {!isLoading &&
+          !error &&
           trendingGifs.map((gif, index) => (
             <GifItem
               key={index}

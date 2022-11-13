@@ -14,7 +14,8 @@
   &--loading {
     color: $color-secondary;
     & > svg {
-      animation: 2s linear infinite svg-animation;
+      fill: $color-secondary;
+      animation: 1s linear infinite svg-animation;
       width: 10%;
       height: 10%;
     }

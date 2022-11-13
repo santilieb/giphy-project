@@ -5,7 +5,7 @@ import Trending from "./components/SectionTrending.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Header from "./components/Header.jsx";
 import { useContext, useState } from "react";
-import ProjectContext from "./context/ProjectContext.jsx";
+import ProjectContext from "./contexts/ProjectContext.jsx";
 
 function App() {
   const { activeNav } = useContext(ProjectContext);

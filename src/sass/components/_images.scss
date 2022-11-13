@@ -6,20 +6,31 @@
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
 
+  &--random {
+    grid-template-columns: none;
+  }
+
   @include respond(tab-port) {
+    &--random {
+      grid-template-columns: none;
+    }
     grid-template-columns: repeat(3, 1fr);
   }
   @include respond(tab-land) {
+    &--random {
+      grid-template-columns: none;
+    }
     grid-template-columns: repeat(4, 1fr);
   }
   @include respond(laptop) {
     &--trending {
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: none;
     }
   }
 
   &__image {
     width: 100%;
-    border: solid $color-white 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid $color-white;
   }
 }
