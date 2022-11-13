@@ -1,0 +1,16 @@
+.section {
+  & > input {
+    width: 100%;
+    height: 5rem;
+    border: none;
+    border-radius: 0.4rem;
+    //text padding left
+    padding-left: 1rem;
+    font-size: 1.7rem;
+  }
+
+  //   &::placeholder {
+  //     color: $color-white;
+  //     opacity: 1;
+  //   }
+}

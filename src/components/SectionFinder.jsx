@@ -74,10 +74,12 @@ function Finder() {
   return (
     <section className="section section--finder">
       <h2 className="heading-secondary heading-secondary--finder">Finder</h2>
+      <h3 className="heading-tertiary heading-tertiary--finder">
+        Search for a GIPHY
+      </h3>
       <input
         className="searchbar"
         type="text"
-        placeholder="Search for a GIPHY"
         value={searchTerm}
         onChange={(e) => handleSearchTerm(e)}
         onKeyUp={(e) => {
