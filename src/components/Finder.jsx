@@ -6,6 +6,7 @@ import { IconSearch } from "../img/sprite.jsx";
 import useFetch from "../hooks/useFetch.jsx";
 import LoadingMessage from "./LoadingMessage";
 import GifItem from "./GifItem";
+import Button from "./Button.jsx";
 
 function Finder() {
   const [finderGifs, setFinderGifs] = useState([]);
@@ -83,10 +84,12 @@ function Finder() {
           handleKeyPress(e);
         }}
       />
-      <button className="btn btn--finder" onClick={handleSearchClick}>
-        <IconSearch />
-        Search
-      </button>
+      <Button
+        icon={<IconSearch />}
+        text={"Search"}
+        className={"finder"}
+        onClick={handleSearchClick}
+      />
       {error && <ErrorMessage message={error} />}
       {finderError && <ErrorMessage message={finderError} />}
       {!searchTerm && isLoading && <LoadingMessage message={loadingMessage} />}

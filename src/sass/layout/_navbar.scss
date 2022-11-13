@@ -6,14 +6,16 @@
 
     &-btn {
       // remove the default button styling
+
       background-color: transparent;
-      border: none;
       cursor: pointer;
       font-size: 1.5rem;
       padding: 1rem 2rem;
       width: 100%;
 
       &--random {
+        border-top: solid 0.5rem $color-bright-purple;
+        border-bottom: solid 0.5rem $color-bright-purple;
         & > svg {
           fill: $color-bright-purple;
         }
@@ -26,6 +28,8 @@
       }
 
       &--finder {
+        border-top: solid 0.5rem $color-fluorescent-orange;
+        border-bottom: solid 0.5rem $color-fluorescent-orange;
         & > svg {
           fill: $color-fluorescent-orange;
         }
@@ -38,6 +42,8 @@
       }
 
       &--trending {
+        border-top: solid 0.5rem $color-fluorescent-green;
+        border-bottom: solid 0.5rem $color-fluorescent-green;
         & > svg {
           fill: $color-fluorescent-green;
         }

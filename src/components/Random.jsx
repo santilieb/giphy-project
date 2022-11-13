@@ -6,6 +6,7 @@ import useFetch from "../hooks/useFetch.jsx";
 import LoadingMessage from "./LoadingMessage.jsx";
 import ErrorMessage from "./ErrorMessage.jsx";
 import GifItem from "./GifItem.jsx";
+import Button from "./Button.jsx";
 
 function Random() {
   const [randomGif, setRandomGif] = useState({});
@@ -38,10 +39,12 @@ function Random() {
             largeSrcSet={randomGif.large}
             className={"images-container"}
           />
-          <button className="btn btn--next" onClick={fetchOnClicked}>
-            <IconNext />
-            Next
-          </button>
+          <Button
+            icon={<IconNext />}
+            text={"Next"}
+            className={"random"}
+            onClick={fetchOnClicked}
+          />
         </>
       )}
     </section>

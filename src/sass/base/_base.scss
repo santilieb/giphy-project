@@ -25,16 +25,21 @@ html {
 
 body {
   box-sizing: border-box;
-
+  //background-color light grey
+  background-color: $color-black;
   // @include respond(tab-port) {
   //     padding: 0;
   // }
 }
-
-::selection {
-  background-color: $color-primary;
-  color: $color-white;
+button {
+  border: none;
 }
+
+// //! Why did I put this?, I don't re
+// ::selection {
+//   background-color: $color-primary;
+//   color: $color-white;
+// }
 
 .App {
   text-align: center;
