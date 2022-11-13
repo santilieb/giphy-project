@@ -9,35 +9,33 @@ import GifItem from "./GifItem";
 import Button from "./Button.jsx";
 
 function Finder() {
-  const [clickedSearch, setClickedSearch] = useState(false);
+  const [clickedSearch, setClickedSearch] = useState(false); // state to check if the search button has been clicked
   const [finderGifs, setFinderGifs] = useState([]); // state to store the gifs
   const [searchTerm, setSearchTerm] = useState(""); // state to store the search term
-  const [finderError, setFinderError] = useState(""); // state to store the error message
+  const [finderError, setFinderError] = useState(""); // state to store the custom error message
   const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=20&rating=g&lang=en`;
-  const { response, isLoading, error, doFetch } = useFetch(url); // custom hook to fetch the data
+  const { response, isLoading, error, doFetch } = useFetch(url); // destructuring from result of custom hook to fetch the data
   const loadingMessage = "Loading searched GIPHYs...";
 
   const fetchFinderGifs = async () => {
-    if (error) {
-      setFinderError(error);
-      return;
-    }
-
-    const { data, pagination } = response;
+    const { data, pagination } = response; // destructuring the response to get the data and pagination
 
     if (clickedSearch) {
+      // if the search button has been clicked
       if (pagination?.total_count === 0) {
-        setFinderError("No GIPHYs found!");
+        // if the total count of the pagination is 0
+        setFinderError("No GIPHYs found!"); // set the error message
         setTimeout(() => {
-          setClickedSearch(false);
+          setClickedSearch(false); // set the clicked search state to false after 3 seconds
         }, 3000);
         return;
       }
     }
     if (data) {
-      const gifs = data.map((gif) => storeGifs(gif));
-      setFinderError("");
-      setFinderGifs(gifs);
+      // if the data exists
+      const gifs = data.map((gif) => storeGifs(gif)); // map through the data and store the gifs
+      setFinderError(""); // set the error message to an empty string
+      setFinderGifs(gifs); // set the finder gifs state to the gifs
     }
   };
 
@@ -69,10 +67,12 @@ function Finder() {
     setClickedSearch(true);
     if (e.key === "Enter") {
       if (searchTerm !== "") {
+        // if the search term is not an empty string
         setFinderGifs([]);
         doFetch();
         setSearchTerm("");
       } else {
+        // if the search term is an empty string
         setFinderGifs([]);
         setFinderError("Please enter a search term to find GIPHYs!");
         setSearchTerm("");
@@ -83,6 +83,7 @@ function Finder() {
     }
   };
 
+  // Run the fetch function every time the response variable changes
   useEffect(() => {
     fetchFinderGifs();
     // eslint-disable-next-line react-hooks/exhaustive-deps

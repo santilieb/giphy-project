@@ -1,3 +1,5 @@
+// Sprite containing all the svg icons
+
 export const IconImage = () => (
   <svg
     version="1.1"

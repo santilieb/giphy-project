@@ -1,4 +1,10 @@
-function GifItem({ smallSrcSet, largeSrcSet, alt, className = "" }) {
+// GIF Item component
+// It takes in the following props:
+// - smallSrcSet: the srcset for the small image
+// - largeSrcSet: the srcset for the large image
+// - alt: the title of the GIF from the API
+
+function GifItem({ smallSrcSet, largeSrcSet, alt }) {
   return (
     <picture>
       <source

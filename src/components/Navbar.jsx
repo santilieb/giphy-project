@@ -1,16 +1,9 @@
+// Navigation bar component, it displays the 3 NavbarItems
+
 import { IconImage, IconSearch, IconLike } from "../img/sprite.jsx";
 import NavbarItem from "./NavbarItem.jsx";
 
 function Navbar() {
-  // set the state of the navbar, by default it is 0 (random)
-  // const { activeNav, setActiveNav } = useContext(ProjectContext);
-
-  // // handle the click event of the navbar
-  // const handleClick = (tabIndex) => {
-  //   // set the state of the navbar to the clicked element
-  //   setActiveNav(tabIndex);
-  // };
-
   return (
     <nav className="navbar">
       <section className="navbar__list">

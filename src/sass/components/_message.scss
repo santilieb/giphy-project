@@ -19,12 +19,10 @@
   }
 
   &--loading {
-    color: $color-secondary;
+    color: $color-fluorescent-green;
     & > svg {
-      fill: $color-secondary;
+      fill: $color-fluorescent-green;
       animation: 1s linear infinite svg-animation;
-      // width: 10%;
-      // height: 10%;
     }
   }
 
@@ -32,8 +30,6 @@
     color: $color-error;
     & > svg {
       fill: $color-error;
-      // width: 20%;
-      // height: 20%;
     }
   }
 }

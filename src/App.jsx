@@ -8,10 +8,11 @@ import { useContext, useState } from "react";
 import ProjectContext from "./contexts/ProjectContext.jsx";
 
 function App() {
-  const { activeNav } = useContext(ProjectContext);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { activeNav } = useContext(ProjectContext); // Get the activeNav state from the context
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Get the window width
 
   //render content (below 1024px)
+  // Depending on the activeNav state, render the corresponding section
   const renderContent = () => {
     switch (activeNav) {
       case 0:
@@ -25,7 +26,7 @@ function App() {
     }
   };
 
-  //render contend (desktop)
+  //render content for desktop (above 1024px)
   const renderContentDesktop = () => {
     return (
       <>
@@ -41,13 +42,15 @@ function App() {
     setWindowWidth(window.innerWidth);
   };
 
-  //Add the event listener to the window
+  //Adding the event listener to the window
   window.addEventListener("resize", handleResize);
 
   return (
     <div className="App">
       <Header />
       <main className="main">
+        {/* If the window is less than 1024px, the content will be rendered using renderContent function
+        otherwise, it will be rendered using renderContentDesktop function */}
         {windowWidth < 1024 ? (
           <>
             <Navbar />

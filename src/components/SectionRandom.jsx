@@ -9,17 +9,18 @@ import GifItem from "./GifItem.jsx";
 import Button from "./Button.jsx";
 
 function Random() {
-  const [randomGif, setRandomGif] = useState({});
+  const [randomGif, setRandomGif] = useState({}); // state to store the random gif
   const url = BASE_URL + "random?api_key=" + API_KEY + "&rating=g&lang=en";
-  const { response, isLoading, error, doFetch } = useFetch(url);
+  const { response, isLoading, error, doFetch } = useFetch(url); // destructuring from result of custom hook to fetch the data
   const loadingMessage = "Loading random GIPHY...";
-  console.log(response);
 
+  // Handler to fetch a new random gif
   const fetchOnClicked = () => {
     setRandomGif({});
     doFetch();
   };
 
+  // Fetch the random gif on page load and when the response changes
   useEffect(() => {
     let { data } = response;
     if (data) {

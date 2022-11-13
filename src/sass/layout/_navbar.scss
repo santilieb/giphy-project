@@ -14,51 +14,15 @@
       width: 100%;
 
       &--random {
-        border-top: solid 0.5rem $color-bright-purple;
-        border-bottom: solid 0.5rem $color-bright-purple;
-        & > svg {
-          fill: $color-bright-purple;
-        }
-        &--active {
-          border-top: solid 0.5rem $color-black;
-          border-bottom: solid 0.5rem $color-black;
-          background-color: $color-bright-purple;
-          & > svg {
-            fill: $color-black;
-          }
-        }
+        @include section($color-bright-purple);
       }
 
       &--finder {
-        border-top: solid 0.5rem $color-fluorescent-orange;
-        border-bottom: solid 0.5rem $color-fluorescent-orange;
-        & > svg {
-          fill: $color-fluorescent-orange;
-        }
-        &--active {
-          border-top: solid 0.5rem $color-black;
-          border-bottom: solid 0.5rem $color-black;
-          background-color: $color-fluorescent-orange;
-          & > svg {
-            fill: $color-black;
-          }
-        }
+        @include section($color-fluorescent-orange);
       }
 
       &--trending {
-        border-top: solid 0.5rem $color-fluorescent-green;
-        border-bottom: solid 0.5rem $color-fluorescent-green;
-        & > svg {
-          fill: $color-fluorescent-green;
-        }
-        &--active {
-          border-top: solid 0.5rem $color-black;
-          border-bottom: solid 0.5rem $color-black;
-          background-color: $color-fluorescent-green;
-          & > svg {
-            fill: $color-black;
-          }
-        }
+        @include section($color-fluorescent-green);
       }
     }
   }

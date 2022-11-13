@@ -7,16 +7,18 @@ import useFetch from "../hooks/useFetch.jsx";
 import GifItem from "./GifItem.jsx";
 
 function Trending() {
-  const [trendingGifs, setTrendingGifs] = useState([]);
+  const [trendingGifs, setTrendingGifs] = useState([]); // state to store the trending gifs
   const url = `${BASE_URL}trending?api_key=${API_KEY}&limit=10&rating=g`;
-  const { response, isLoading, error } = useFetch(url);
+  const { response, isLoading, error } = useFetch(url); // destructuring from result of custom hook to fetch the data
   const loadingMessage = "Loading trending GIPHYs...";
 
+  // Fetch the trending gifs on page load and when the response changes
   useEffect(() => {
-    const { data } = response;
+    const { data } = response; // destructuring data from response
     if (data) {
-      const gifs = data.map((gif) => storeGifs(gif));
-      setTrendingGifs(gifs);
+      // if data exists
+      const gifs = data.map((gif) => storeGifs(gif)); // map over the data and store the gifs
+      setTrendingGifs(gifs); // set the state with the gifs
     }
   }, [response]);
 

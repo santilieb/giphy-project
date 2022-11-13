@@ -1,3 +1,5 @@
+// Context provider used to store the active button state on the navigation bar
+
 import React, { useState, createContext } from "react";
 
 const ProjectContext = createContext();
