@@ -13,7 +13,7 @@ function Finder() {
   const [finderGifs, setFinderGifs] = useState([]); // state to store the gifs
   const [searchTerm, setSearchTerm] = useState(""); // state to store the search term
   const [finderError, setFinderError] = useState(""); // state to store the error message
-  const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=10&rating=g&lang=en`;
+  const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=20&rating=g&lang=en`;
   const { response, isLoading, error, doFetch } = useFetch(url); // custom hook to fetch the data
   const loadingMessage = "Loading searched GIPHYs...";
 
@@ -113,7 +113,7 @@ function Finder() {
       {error && <ErrorMessage message={error} />}
 
       {/* Display the error custom error messages, if it isn't loading and only if the search button has been clicked */}
-      {!isLoading && clickedSearch && finderError && (
+      {!isLoading && !error && clickedSearch && finderError && (
         <ErrorMessage message={finderError} />
       )}
 

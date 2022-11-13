@@ -20,6 +20,8 @@
           fill: $color-bright-purple;
         }
         &--active {
+          border-top: solid 0.5rem $color-black;
+          border-bottom: solid 0.5rem $color-black;
           background-color: $color-bright-purple;
           & > svg {
             fill: $color-black;
@@ -34,6 +36,8 @@
           fill: $color-fluorescent-orange;
         }
         &--active {
+          border-top: solid 0.5rem $color-black;
+          border-bottom: solid 0.5rem $color-black;
           background-color: $color-fluorescent-orange;
           & > svg {
             fill: $color-black;
@@ -48,6 +52,8 @@
           fill: $color-fluorescent-green;
         }
         &--active {
+          border-top: solid 0.5rem $color-black;
+          border-bottom: solid 0.5rem $color-black;
           background-color: $color-fluorescent-green;
           & > svg {
             fill: $color-black;
