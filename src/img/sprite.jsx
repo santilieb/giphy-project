@@ -91,9 +91,3 @@ export const IconError = () => (
     <path d="M16 22c-1.105 0-2-0.895-2-2v-6c0-1.105 0.895-2 2-2s2 0.895 2 2v6c0 1.105-0.895 2-2 2z"></path>
   </svg>
 );
-
-export const IconSpinner = () => (
-  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="45" />
-  </svg>
-);

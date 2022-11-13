@@ -13,8 +13,9 @@ function Trending() {
   const loadingMessage = "Loading trending GIPHYs...";
 
   useEffect(() => {
-    if (response) {
-      const gifs = response.map((gif) => storeGifs(gif));
+    const { data } = response;
+    if (data) {
+      const gifs = data.map((gif) => storeGifs(gif));
       setTrendingGifs(gifs);
     }
   }, [response]);

@@ -13,6 +13,7 @@ function Random() {
   const url = BASE_URL + "random?api_key=" + API_KEY + "&rating=g&lang=en";
   const { response, isLoading, error, doFetch } = useFetch(url);
   const loadingMessage = "Loading random GIPHY...";
+  console.log(response);
 
   const fetchOnClicked = () => {
     setRandomGif({});
@@ -20,8 +21,9 @@ function Random() {
   };
 
   useEffect(() => {
-    if (response) {
-      const gif = storeGifs(response);
+    let { data } = response;
+    if (data) {
+      const gif = storeGifs(data);
       setRandomGif(gif);
     }
   }, [response]);

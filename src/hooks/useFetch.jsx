@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Custom hook that fetches data from the API using axios, set to timeout after 10 seconds
 function useFetch(url) {
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState({});
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -12,8 +12,7 @@ function useFetch(url) {
       const res = await axios.get(url, {
         timeout: 10000,
       });
-      const { data } = res.data;
-      setResponse(data);
+      setResponse(res.data);
     } catch (error) {
       setError(error.message);
     } finally {

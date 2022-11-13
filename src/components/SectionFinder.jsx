@@ -9,11 +9,12 @@ import GifItem from "./GifItem";
 import Button from "./Button.jsx";
 
 function Finder() {
-  const [finderGifs, setFinderGifs] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [finderError, setFinderError] = useState("");
+  const [clickedSearch, setClickedSearch] = useState(false);
+  const [finderGifs, setFinderGifs] = useState([]); // state to store the gifs
+  const [searchTerm, setSearchTerm] = useState(""); // state to store the search term
+  const [finderError, setFinderError] = useState(""); // state to store the error message
   const url = `${BASE_URL}search?api_key=${API_KEY}&q=${searchTerm}&limit=10&rating=g&lang=en`;
-  const { response, isLoading, error, doFetch } = useFetch(url);
+  const { response, isLoading, error, doFetch } = useFetch(url); // custom hook to fetch the data
   const loadingMessage = "Loading searched GIPHYs...";
 
   const fetchFinderGifs = async () => {
@@ -22,13 +23,19 @@ function Finder() {
       return;
     }
 
-    setFinderError("");
-    if (response) {
-      const gifs = response.map((gif) => storeGifs(gif));
-      if (response.length === 0) {
-        setFinderGifs([]);
+    const { data, pagination } = response;
+
+    if (clickedSearch) {
+      if (pagination?.total_count === 0) {
         setFinderError("No GIPHYs found!");
+        setTimeout(() => {
+          setClickedSearch(false);
+        }, 3000);
+        return;
       }
+    }
+    if (data) {
+      const gifs = data.map((gif) => storeGifs(gif));
       setFinderError("");
       setFinderGifs(gifs);
     }
@@ -46,6 +53,7 @@ function Finder() {
       setFinderGifs([]);
       doFetch(url);
       setSearchTerm("");
+      setClickedSearch(true);
     } else {
       setFinderGifs([]);
       setFinderError("Please enter a search term to find GIPHYs!");
@@ -59,6 +67,7 @@ function Finder() {
         setFinderGifs([]);
         doFetch();
         setSearchTerm("");
+        setClickedSearch(true);
       } else {
         setFinderGifs([]);
         setFinderError("Please enter a search term to find GIPHYs!");
@@ -93,7 +102,9 @@ function Finder() {
         onClick={handleSearchClick}
       />
       {error && <ErrorMessage message={error} />}
-      {finderError && <ErrorMessage message={finderError} />}
+      {!isLoading && clickedSearch && finderError && (
+        <ErrorMessage message={finderError} />
+      )}
       {!searchTerm && isLoading && <LoadingMessage message={loadingMessage} />}
       <div className="images-container images-container--finder">
         {!isLoading &&
@@ -109,17 +120,6 @@ function Finder() {
             />
           ))}
       </div>
-
-      {/* {error && <ErrorMessage message={error} />}
-      <div className="images-container">
-        {finderGifs.map((gif, index) => (
-          <ResponsiveImage
-            alt={gif.title}
-            smallSrcSet={gif.small}
-            largeSrcSet={gif.large}
-          />
-        ))}
-      </div> */}
     </section>
   );
 }
