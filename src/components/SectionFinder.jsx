@@ -49,6 +49,7 @@ function Finder() {
 
   // Handle the search button click
   const handleSearchClick = () => {
+    setClickedSearch(true);
     if (searchTerm !== "") {
       setFinderGifs([]);
       doFetch(url);
@@ -57,27 +58,34 @@ function Finder() {
     } else {
       setFinderGifs([]);
       setFinderError("Please enter a search term to find GIPHYs!");
+      setTimeout(() => {
+        setFinderError("");
+      }, 3000);
     }
   };
 
   // Handle the enter key press
   const handleKeyPress = (e) => {
+    setClickedSearch(true);
     if (e.key === "Enter") {
       if (searchTerm !== "") {
         setFinderGifs([]);
         doFetch();
         setSearchTerm("");
-        setClickedSearch(true);
       } else {
         setFinderGifs([]);
         setFinderError("Please enter a search term to find GIPHYs!");
         setSearchTerm("");
+        setTimeout(() => {
+          setFinderError("");
+        }, 3000);
       }
     }
   };
 
   useEffect(() => {
     fetchFinderGifs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
   return (
@@ -101,12 +109,20 @@ function Finder() {
         className={"finder"}
         onClick={handleSearchClick}
       />
+      {/* Display the error message from the API */}
       {error && <ErrorMessage message={error} />}
+
+      {/* Display the error custom error messages, if it isn't loading and only if the search button has been clicked */}
       {!isLoading && clickedSearch && finderError && (
         <ErrorMessage message={finderError} />
       )}
-      {!searchTerm && isLoading && <LoadingMessage message={loadingMessage} />}
+
+      {/* Display the loading message, if it is loading and only if the search button has been clicked and a search term has been stored */}
+      {!searchTerm && clickedSearch && isLoading && (
+        <LoadingMessage message={loadingMessage} />
+      )}
       <div className="images-container images-container--finder">
+        {/* Display the gifs, if it isn't loading and the error states are empty*/}
         {!isLoading &&
           !error &&
           !finderError &&

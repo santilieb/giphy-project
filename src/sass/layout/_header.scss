@@ -1,15 +1,29 @@
 .header {
-  background-color: $color-dark-grey;
+  background-color: $color-black;
   padding: 2rem;
   width: auto;
 
   @include respond(laptop) {
     text-align: left;
     letter-spacing: 0.7rem;
+    border-bottom: solid $color-white;
   }
 
   &__text-box {
-    color: $color-white;
+    display: inline-block;
+    //limit to text box
+    background-image: linear-gradient(
+      to left,
+      violet,
+      indigo,
+      blue,
+      green,
+      yellow,
+      orange,
+      red
+    );
+    -webkit-background-clip: text;
+    color: transparent;
     font-size: 1.6rem;
 
     @include respond(laptop) {

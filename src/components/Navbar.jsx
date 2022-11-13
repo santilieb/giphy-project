@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import ProjectContext from "../contexts/ProjectContext.jsx";
 import { IconImage, IconSearch, IconLike } from "../img/sprite.jsx";
 import NavbarItem from "./NavbarItem.jsx";
 

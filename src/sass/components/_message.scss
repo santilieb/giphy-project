@@ -10,14 +10,21 @@
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > svg {
+    margin-right: 1rem;
+  }
 
   &--loading {
     color: $color-secondary;
     & > svg {
       fill: $color-secondary;
       animation: 1s linear infinite svg-animation;
-      width: 10%;
-      height: 10%;
+      // width: 10%;
+      // height: 10%;
     }
   }
 
@@ -25,8 +32,8 @@
     color: $color-error;
     & > svg {
       fill: $color-error;
-      width: 20%;
-      height: 20%;
+      // width: 20%;
+      // height: 20%;
     }
   }
 }

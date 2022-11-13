@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ErrorMessage from "./ErrorMessage.jsx";
 import LoadingMessage from "./LoadingMessage";
-import { fetchData, storeGifs } from "../api/apiUtils.js";
+import { storeGifs } from "../api/apiUtils.js";
 import { API_KEY, BASE_URL } from "../api/config.js";
 import useFetch from "../hooks/useFetch.jsx";
 import GifItem from "./GifItem.jsx";
