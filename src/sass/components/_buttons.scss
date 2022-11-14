@@ -9,15 +9,12 @@
   padding: 1rem 2rem;
   border-radius: 0.4rem;
   margin-top: 2rem;
-
-  &__text {
-    margin-left: 1rem;
-    font-size: 2rem;
-  }
+  font-size: 2rem;
 
   &--random {
     color: $color-bright-purple;
     & > svg {
+      margin-right: 1rem;
       fill: $color-bright-purple;
     }
   }
@@ -26,6 +23,7 @@
     margin-bottom: 2rem;
     color: $color-fluorescent-orange;
     & > svg {
+      margin-right: 1rem;
       fill: $color-fluorescent-orange;
     }
   }

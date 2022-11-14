@@ -1,4 +1,4 @@
-// GIF Item component
+// GIF Item component that loads the image corresponding to the screen size
 // It takes in the following props:
 // - smallSrcSet: the srcset for the small image
 // - largeSrcSet: the srcset for the large image
