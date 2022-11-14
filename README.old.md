@@ -1,2 +1,0 @@
-# giphy-project
-GIPHY Assessment
